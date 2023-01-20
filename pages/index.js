@@ -2,10 +2,27 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
+import axios from 'axios';
+import { useEffect } from 'react';
+
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
+  var key = '5714346188686087';
+
+  
+  useEffect(() => {
+    //axios.get('https://superheroapi.com/api/5714346188686087/search/iron%20man')
+    axios.get(`https://superheroapi.com/api.php/${key}/search/iron%20man`)
+    .then((response) => {
+      console.log(response.data);
+    }).catch(err => {
+      console.log(err)
+    });
+  },[])
+
   return (
     <>
       <Head>
