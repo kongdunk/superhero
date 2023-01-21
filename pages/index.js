@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -11,17 +11,36 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
 
   var key = '5714346188686087';
+  const [data, setData] = useState({});
+  const [name, setName] = useState('');
+  const [playerCard, setPlayerCard] = useState({});
+  const [cardOption1, setCardOption1] = useState({});
+  const [cardOption2, setCardOption2] = useState({});
+  const [cardOption3, setCardOption3] = useState({});
+  const [cardOption4, setCardOption4] = useState({});
+  const [cardOption5, setCardOption5] = useState({});
 
-  
-  useEffect(() => {
-    //axios.get('https://superheroapi.com/api/5714346188686087/search/iron%20man')
-    axios.get(`https://superheroapi.com/api.php/${key}/search/iron%20man`)
-    .then((response) => {
-      console.log(response.data);
-    }).catch(err => {
-      console.log(err)
-    });
-  },[])
+
+  /* FUNCTION FOR CALLING SUPERHERO API DATA TO cardOptions */
+  function setCharacter(setcardoption,characterID) {
+      useEffect(() => {
+      //axios.get('https://superheroapi.com/api/5714346188686087/search/iron%20man')
+      axios.get(`https://superheroapi.com/api.php/${key}/${characterID}`)
+      .then((response) => {
+        console.log(response.data)
+        setcardoption(response.data)
+      }).catch(err => {
+        console.log(err)
+      });
+    },[])
+  }
+  /* CALLING THE FUNCTION TO GET THE SUPERHERO DATA */
+  setCharacter(setCardOption1,1)
+  setCharacter(setCardOption2,100)
+  setCharacter(setCardOption3,200)
+  setCharacter(setCardOption4,300)
+  setCharacter(setCardOption5,400)
+
 
   return (
     <>
@@ -32,108 +51,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.js</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
-        </div>
+      <div> {cardOption1.name} </div>
+      <div> {cardOption2.name} </div>
+      <div> {cardOption3.name} </div>
+      <div> {cardOption4.name} </div>
+      <div> {cardOption5.name} </div>
 
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
-          </div>
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
       </main>
     </>
   )
