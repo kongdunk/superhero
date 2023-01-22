@@ -15,11 +15,11 @@ export default function Home() {
   const [name, setName] = useState('');
   const [playerCard, setPlayerCard] = useState({});
   const [cardOption1, setCardOption1] = useState({});
-  const [cardOption1Image, setCardOption1Image] = useState("");
   const [cardOption2, setCardOption2] = useState({});
   const [cardOption3, setCardOption3] = useState({});
   const [cardOption4, setCardOption4] = useState({});
   const [cardOption5, setCardOption5] = useState({});
+  const [cardOption1Image, setCardOption1Image] = useState("");
 
   /* FUNCTION FOR CALLING SUPERHERO API DATA TO cardOptions */
   function setCharacter(setcardoption,characterID) {
@@ -37,11 +37,12 @@ export default function Home() {
   }
 
   /* function for only selecting one SUPERHERO checkbox  */
-  function onlySelect(id){
+  function onlySelect(id, playerCard){
     for (let i = 1; i < 6; i++) {
       document.getElementById("check" + i).checked = false;
     }
     document.getElementById(id).checked = true;
+    setPlayerCard(playerCard)
   }
   
 
@@ -64,25 +65,26 @@ export default function Home() {
       <div class="optionsContainer">  
         <div className='cardContainer'> 
           <img style={{height:'35vh'}} src={cardOption1Image} alt="" srcset="" />
-          {cardOption1.name} <input id="check1" type="checkbox" onChange={(e)=> onlySelect(e.target.id)} /> 
+          {cardOption1.name} <input id="check1" type="checkbox" onChange={(e)=> onlySelect(e.target.id, cardOption1)} /> 
         </div>
         <div className='cardContainer'> 
           <img style={{height:'35vh'}} src={cardOption1Image} alt="" srcset="" />
-          {cardOption2.name} <input id="check2" type="checkbox" onChange={(e)=> onlySelect(e.target.id)} /> 
+          {cardOption2.name} <input id="check2" type="checkbox" onChange={(e)=> onlySelect(e.target.id, cardOption2)} /> 
           </div>
         <div className='cardContainer'> 
           <img style={{height:'35vh'}} src={cardOption1Image} alt="" srcset="" />
-          {cardOption3.name} <input id="check3" type="checkbox" onChange={(e)=> onlySelect(e.target.id)} /> 
+          {cardOption3.name} <input id="check3" type="checkbox" onChange={(e)=> onlySelect(e.target.id, cardOption3)} /> 
           </div>
         <div className='cardContainer'> 
           <img style={{height:'35vh'}} src={cardOption1Image} alt="" srcset="" />
-          {cardOption4.name} <input id="check4" type="checkbox" onChange={(e)=> onlySelect(e.target.id)} /> 
+          {cardOption4.name} <input id="check4" type="checkbox" onChange={(e)=> onlySelect(e.target.id, cardOption4)} /> 
           </div>
         <div className='cardContainer'> 
           <img style={{height:'35vh'}} src={cardOption1Image} alt="" srcset="" />
-          {cardOption5.name} <input id="check5" type="checkbox" onChange={(e)=> onlySelect(e.target.id)} /> 
+          {cardOption5.name} <input id="check5" type="checkbox" onChange={(e)=> onlySelect(e.target.id, cardOption5)} /> 
           </div>
       </div>
+      <div> Your Superhero: {playerCard.name} </div>
       </main>
     </>
   )
