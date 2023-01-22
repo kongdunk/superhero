@@ -1,3 +1,14 @@
+.optionsContainer {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100vw;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+}
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;

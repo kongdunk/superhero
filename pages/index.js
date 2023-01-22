@@ -15,6 +15,7 @@ export default function Home() {
   const [name, setName] = useState('');
   const [playerCard, setPlayerCard] = useState({});
   const [cardOption1, setCardOption1] = useState({});
+  const [cardOption1Image, setCardOption1Image] = useState("");
   const [cardOption2, setCardOption2] = useState({});
   const [cardOption3, setCardOption3] = useState({});
   const [cardOption4, setCardOption4] = useState({});
@@ -28,6 +29,7 @@ export default function Home() {
       .then((response) => {
         console.log(response.data)
         setcardoption(response.data)
+        setCardOption1Image(response.data.image.url)
       }).catch(err => {
         console.log(err)
       });
@@ -59,15 +61,28 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-      <div> {cardOption1.name} <input id="check1" type="checkbox" onChange={(e)=> onlySelect(e.target.id)} /> </div>
-      <div> {cardOption2.name} <input id="check2" type="checkbox" onChange={(e)=> onlySelect(e.target.id)} /> </div>
-      <div> {cardOption3.name} <input id="check3" type="checkbox" onChange={(e)=> onlySelect(e.target.id)} /> </div>
-      <div> {cardOption4.name} <input id="check4" type="checkbox" onChange={(e)=> onlySelect(e.target.id)} /> </div>
-      <div> {cardOption5.name} <input id="check5" type="checkbox" onChange={(e)=> onlySelect(e.target.id)} /> </div>
-      
-      <script>
-        
-      </script>
+      <div class="optionsContainer">  
+        <div className='cardContainer'> 
+          <img style={{height:'35vh'}} src={cardOption1Image} alt="" srcset="" />
+          {cardOption1.name} <input id="check1" type="checkbox" onChange={(e)=> onlySelect(e.target.id)} /> 
+        </div>
+        <div className='cardContainer'> 
+          <img style={{height:'35vh'}} src={cardOption1Image} alt="" srcset="" />
+          {cardOption2.name} <input id="check2" type="checkbox" onChange={(e)=> onlySelect(e.target.id)} /> 
+          </div>
+        <div className='cardContainer'> 
+          <img style={{height:'35vh'}} src={cardOption1Image} alt="" srcset="" />
+          {cardOption3.name} <input id="check3" type="checkbox" onChange={(e)=> onlySelect(e.target.id)} /> 
+          </div>
+        <div className='cardContainer'> 
+          <img style={{height:'35vh'}} src={cardOption1Image} alt="" srcset="" />
+          {cardOption4.name} <input id="check4" type="checkbox" onChange={(e)=> onlySelect(e.target.id)} /> 
+          </div>
+        <div className='cardContainer'> 
+          <img style={{height:'35vh'}} src={cardOption1Image} alt="" srcset="" />
+          {cardOption5.name} <input id="check5" type="checkbox" onChange={(e)=> onlySelect(e.target.id)} /> 
+          </div>
+      </div>
       </main>
     </>
   )
