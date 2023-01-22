@@ -20,7 +20,6 @@ export default function Home() {
   const [cardOption4, setCardOption4] = useState({});
   const [cardOption5, setCardOption5] = useState({});
 
-
   /* FUNCTION FOR CALLING SUPERHERO API DATA TO cardOptions */
   function setCharacter(setcardoption,characterID) {
       useEffect(() => {
@@ -34,13 +33,22 @@ export default function Home() {
       });
     },[])
   }
+
+  /* function for only selecting one SUPERHERO checkbox  */
+  function onlySelect(id){
+    for (let i = 1; i < 6; i++) {
+      document.getElementById("check" + i).checked = false;
+    }
+    document.getElementById(id).checked = true;
+  }
+  
+
   /* CALLING THE FUNCTION TO GET THE SUPERHERO DATA */
   setCharacter(setCardOption1,1)
   setCharacter(setCardOption2,100)
   setCharacter(setCardOption3,200)
   setCharacter(setCardOption4,300)
   setCharacter(setCardOption5,400)
-
 
   return (
     <>
@@ -51,12 +59,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-      <div> {cardOption1.name} </div>
-      <div> {cardOption2.name} </div>
-      <div> {cardOption3.name} </div>
-      <div> {cardOption4.name} </div>
-      <div> {cardOption5.name} </div>
-
+      <div> {cardOption1.name} <input id="check1" type="checkbox" onChange={(e)=> onlySelect(e.target.id)} /> </div>
+      <div> {cardOption2.name} <input id="check2" type="checkbox" onChange={(e)=> onlySelect(e.target.id)} /> </div>
+      <div> {cardOption3.name} <input id="check3" type="checkbox" onChange={(e)=> onlySelect(e.target.id)} /> </div>
+      <div> {cardOption4.name} <input id="check4" type="checkbox" onChange={(e)=> onlySelect(e.target.id)} /> </div>
+      <div> {cardOption5.name} <input id="check5" type="checkbox" onChange={(e)=> onlySelect(e.target.id)} /> </div>
+      
+      <script>
+        
+      </script>
       </main>
     </>
   )
