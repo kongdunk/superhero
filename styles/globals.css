@@ -7,6 +7,37 @@
 .cardContainer {
   display: flex;
   flex-direction: column;
+  margin: 1rem;
+}
+
+.imgCont {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.splashCont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.start {
+  bottom: 5rem;
+  width: 200px;
+  height: 75px;
+  font-size: 2em;
+  background: red;
+  border-radius: 10px;
+  position: absolute;
+}
+
+.start:hover {
+  background: darkred;
+  cursor: pointer;
 }
 
 :root {
