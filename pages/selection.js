@@ -174,8 +174,10 @@ export default function Home() {
             />
           </div>
         </div>
-
+        <div> Your Superhero: {playerCard.name} </div>
+=======
         <Card name={cardOption1.name} src={cardOption1Image}/>
+      </div>
       <div> Your Superhero: {playerCard.name} </div>
       </main>
     </>
