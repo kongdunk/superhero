@@ -17,10 +17,8 @@ const CardCont = styled.div`
 const ImgCont = styled.img`
     width: 100%;
     height: 85%;
-    padding-left: 1em;
     object-fit: cover;
     margin: 0.75em;
-    background-image: url(http://placekitten.com/300/300);
 `
 
 const Name = styled.span`
@@ -42,11 +40,13 @@ const PowerCont = styled.div`
     font-size: 3em;
 `
 
-export default function Card(){
+export default function Card({ name, src }){
+
+
     return (
         <CardCont>
-            <Name>SPIDER-MAN</Name>
-            <ImgCont/>
+            <Name>{name}</Name>
+            <ImgCont src={src}/>
             <PowerCont>100</PowerCont>
         </CardCont>
     )

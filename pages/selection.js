@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import Lottie from "lottie-react";
 import LoadingAnimation from '../public/loading.json'
 
-
+import Card from '../components/card';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -94,10 +94,7 @@ export default function Home() {
           <img style={{height:'35vh'}} src={cardOption1Image} alt="" srcSet="" />
           {cardOption4.name} <input id="check4" type="checkbox" onChange={(e)=> onlySelect(e.target.id, cardOption4)} /> 
           </div>
-        <div className='cardContainer'> 
-          <img style={{height:'35vh'}} src={cardOption1Image} alt="" srcSet="" />
-          {cardOption5.name} <input id="check5" type="checkbox" onChange={(e)=> onlySelect(e.target.id, cardOption5)} /> 
-          </div>
+        <Card name={cardOption1.name} src={cardOption1Image}/>
       </div>
       <div> Your Superhero: {playerCard.name} </div>
       </main>
