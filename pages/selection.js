@@ -8,10 +8,9 @@ import Lottie from "lottie-react";
 import LoadingAnimation from "../public/loading.json";
 
 const inter = Inter({ subsets: ["latin"] });
-=======
+
 import Card from '../components/card';
 
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   var key = "5714346188686087";
@@ -175,10 +174,8 @@ export default function Home() {
             />
           </div>
         </div>
-        <div> Your Superhero: {playerCard.name} </div>
-=======
+
         <Card name={cardOption1.name} src={cardOption1Image}/>
-      </div>
       <div> Your Superhero: {playerCard.name} </div>
       </main>
     </>
