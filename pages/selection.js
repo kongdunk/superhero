@@ -55,7 +55,6 @@ export default function Home() {
     document.getElementById(id).checked = true;
     setPlayerCard(playerCard)
   }
-  
 
   /* CALLING THE FUNCTION TO GET THE SUPERHERO DATA */
   setCharacter(setCardOption1,1)
@@ -94,8 +93,8 @@ export default function Home() {
           <img style={{height:'35vh'}} src={cardOption1Image} alt="" srcSet="" />
           {cardOption4.name} <input id="check4" type="checkbox" onChange={(e)=> onlySelect(e.target.id, cardOption4)} /> 
           </div>
-        <Card name={cardOption1.name} src={cardOption1Image}/>
       </div>
+      <Card name={cardOption1.name} src={cardOption1.image.url} power="101"/>
       <div> Your Superhero: {playerCard.name} </div>
       </main>
     </>

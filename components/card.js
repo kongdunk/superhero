@@ -2,16 +2,21 @@ import styled from "styled-components"
 
 const CardCont = styled.div`
     width: 350px;
-    height: 500px;
-    padding: 1em;
+    height: 480px;
+    padding: 2.5em;
+    padding-top: 2em;
+    margin: 1em;
+    margin-top: 2em;
+    margin-right: 2em;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: solid 8px #dbdbdb;
-    border-radius: 10px;
-    background-color: #265fab;
     color: white;
     position: relative;
+    background-image: url("card.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 `
 
 const ImgCont = styled.img`
@@ -32,22 +37,23 @@ const PowerCont = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid 10px #dbdbdb;
+    border: solid 12px #dbdbdb;
     border-radius: 100%;
     position: absolute;
-    top: 7.75em;
+    top: -0.75em;
+    right: -0.75em;
     background-color: #265fab;
-    font-size: 3em;
+    font-size: 2.5em;
 `
 
-export default function Card({ name, src }){
+export default function Card({ name, src, power }){
 
 
     return (
         <CardCont>
             <Name>{name}</Name>
             <ImgCont src={src}/>
-            <PowerCont>100</PowerCont>
+            <PowerCont>{power}</PowerCont>
         </CardCont>
     )
 }
