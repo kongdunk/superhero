@@ -1,5 +1,6 @@
 .optionsContainer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   width: 100vw;
 }
@@ -7,8 +8,38 @@
 .cardContainer {
   display: flex;
   flex-direction: column;
+  border: #dddddd solid 10px;
+  border-radius: 10px;
+  background: linear-gradient(250deg, #d5b0f7, #f5e4ce, #b5e9f2, #bdf5c3);
+  background-size: 300% 300%;
+	animation: gradient 10s ease infinite;
+  padding: 10px;
   margin: 1rem;
+  filter: brightness(.55) contrast(1.2);
 }
+
+.cardContainer:hover {
+  box-shadow: 0 5px 15px rgb(255, 249, 223);
+  transition: all .2s ease-in-out;
+  transform: scale(1.25);
+  animation: gradient 3s ease infinite;
+  filter: brightness(1) contrast(1);
+  z-index: 2;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+
+}
+
 
 .imgCont {
   display: flex;
@@ -38,6 +69,31 @@
 .start:hover {
   background: darkred;
   cursor: pointer;
+}
+
+.loadingCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  bottom: 1rem;
+  position: absolute;
+}
+
+.quote {
+  position: absolute;
+  font-size: 4em;
+  color: white;
+}
+
+.loadingSplash {
+  width: 100vw;
+  height: 100vh;
+  opacity: 50%;
+  z-index: -1;
 }
 
 :root {
