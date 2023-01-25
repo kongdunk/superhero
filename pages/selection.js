@@ -144,7 +144,6 @@ export default function Home() {
               onChange={(e) => onlySelect(e.target.id, cardOption3)}
             />
           </div>
-
           <div className="cardContainer">
             <img
               style={{ height: "35vh" }}
@@ -174,11 +173,8 @@ export default function Home() {
             />
           </div>
         </div>
+        <Card name={cardOption1.name} src={cardOption1.image.url} power="101"/>
         <div> Your Superhero: {playerCard.name} </div>
-
-        <Card name={cardOption1.name} src={cardOption1Image}/>
-
-      <div> Your Superhero: {playerCard.name} </div>
       </main>
     </>
   );
