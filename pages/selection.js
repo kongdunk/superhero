@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import Lottie from "lottie-react";
 import LoadingAnimation from "../public/loading.json";
 
@@ -25,6 +25,8 @@ export default function Home() {
   const [cardOption1Image, setCardOption1Image] = useState("");
 
   const [loading, setLoading] = useState(true);
+  const [quote, setQuote] = useState("")
+
 
 
   useEffect(() => {
@@ -50,16 +52,19 @@ export default function Home() {
     }, []);
   }
 
-  function quote() {
+  function getQuote() {
+    useEffect(() => {
     axios
       .get('https://www.affirmations.dev/')
       .then((response) => {
         console.log(response);
+        setQuote(response)
       })
       .catch((err) => {
         console.log(err);
       });
-  }
+  }, [])
+}
 
   /* function for only selecting one SUPERHERO checkbox  */
   function onlySelect(id, playerCard) {
@@ -80,7 +85,7 @@ export default function Home() {
   if (loading) {
     return (
       <div className="loadingCont">
-        <div className="quote">{quote()}</div>
+        <div className="quote">{quote}</div>
         <Lottie
         className="loader"
           style={{ width: 500, height: 500 }}
