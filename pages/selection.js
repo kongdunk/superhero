@@ -22,7 +22,6 @@ export default function Home() {
   const [cardOption3, setCardOption3] = useState({});
   const [cardOption4, setCardOption4] = useState({});
   const [cardOption5, setCardOption5] = useState({});
-  const [cardOption1Image, setCardOption1Image] = useState("");
 
   const [loading, setLoading] = useState(true);
   const [quote, setQuote] = useState("")
@@ -44,7 +43,6 @@ export default function Home() {
         .then((response) => {
           console.log(response.data);
           setcardoption(response.data);
-          setCardOption1Image(response.data.image.url);
         })
         .catch((err) => {
           console.log(err);
@@ -110,7 +108,7 @@ export default function Home() {
           <div className="cardContainer">
             <img
               style={{ height: "35vh" }}
-              src={cardOption1Image}
+              src={cardOption1.image.url}
               alt=""
               srcSet=""
             />
@@ -124,7 +122,7 @@ export default function Home() {
           <div className="cardContainer">
             <img
               style={{ height: "35vh" }}
-              src={cardOption1Image}
+              src={cardOption2.image.url}
               alt=""
               srcSet=""
             />
@@ -138,7 +136,7 @@ export default function Home() {
           <div className="cardContainer">
             <img
               style={{ height: "35vh" }}
-              src={cardOption1Image}
+              src={cardOption3.image.url}
               alt=""
               srcSet=""
             />
@@ -152,7 +150,7 @@ export default function Home() {
           <div className="cardContainer">
             <img
               style={{ height: "35vh" }}
-              src={cardOption1Image}
+              src={cardOption4.image.url}
               alt=""
               srcSet=""
             />
@@ -166,7 +164,7 @@ export default function Home() {
           <div className="cardContainer">
             <img
               style={{ height: "35vh" }}
-              src={cardOption1Image}
+              src={cardOption5.image.url}
               alt=""
               srcSet=""
             />
