@@ -17,6 +17,7 @@ export default function Home() {
   const [data, setData] = useState({});
   const [name, setName] = useState("");
   const [playerCard, setPlayerCard] = useState({});
+  const [botCard, setBotCard] = useState({});
   const [cardOption1, setCardOption1] = useState({});
   const [cardOption2, setCardOption2] = useState({});
   const [cardOption3, setCardOption3] = useState({});
@@ -79,6 +80,7 @@ export default function Home() {
   setCharacter(setCardOption3, 200);
   setCharacter(setCardOption4, 300);
   setCharacter(setCardOption5, 400);
+  setCharacter(setBotCard, Math.floor((Math.random() * 731) + 1));
 
   if (loading) {
     return (
@@ -178,7 +180,17 @@ export default function Home() {
         </div>
         <Card name={cardOption1.name} src={cardOption1.image.url} power="101"/>
         <div> Your Superhero: {playerCard.name} </div>
-      </main>
+        <div className="cardContainer">
+            <img
+              style={{ height: "35vh" }}
+              src={botCard.image.url}
+              alt=""
+              srcSet=""
+            />
+            {botCard.name}{" "}
+          </div>
+        <div> You will be fighting against: </div>
+      </main> 
     </>
   );
 }
