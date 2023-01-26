@@ -16,7 +16,7 @@ export default function Home() {
   var key = "5714346188686087";
   const [data, setData] = useState({});
   const [name, setName] = useState("");
-  const [playerCard, setPlayerCard] = useState({});
+  const [playerCard, setPlayerCard] = useState({image:"n\a"});
   const [botCard, setBotCard] = useState({});
   const [cardOption1, setCardOption1] = useState({});
   const [cardOption2, setCardOption2] = useState({});
@@ -178,7 +178,7 @@ export default function Home() {
             />
           </div>
         </div>
-        <Card name={cardOption1.name} src={cardOption1.image.url} power="101"/>
+        <Card name={cardOption1.name} src={playerCard.image.url} power="101"/>
         <div> Your Superhero: {playerCard.name} </div>
         <div className="cardContainer">
             <img
