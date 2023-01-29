@@ -29,12 +29,6 @@ export default function Home() {
 
 
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  });
-
   /* FUNCTION FOR CALLING SUPERHERO API DATA TO cardOptions */
   function setCharacter(setcardoption, characterID) {
     useEffect(() => {
@@ -66,6 +60,15 @@ export default function Home() {
   }, [])
 }
 
+
+
+//LOADING ANIMATION TIME
+useEffect(() => {
+  setTimeout(() => {
+    setLoading(false);
+  }, 2000);
+});
+
   /* function for only selecting one SUPERHERO checkbox  */
   function onlySelect(id, playerCard) {
     for (let i = 1; i < 6; i++) {
@@ -82,6 +85,8 @@ export default function Home() {
   setCharacter(setCardOption4, 300);
   setCharacter(setCardOption5, 400);
 
+
+  //LOADING PAGE
   if (loading) {
     return (
       <div className="loadingCont">
@@ -97,6 +102,7 @@ export default function Home() {
     );
   }
 
+  //CARD SELECTION
   return (
     <>
       <Head>
@@ -178,7 +184,8 @@ export default function Home() {
             />
           </div>
         </div>
-        <Card name={cardOption1.name} src={cardOption1.image.url} power="101"/>
+        
+        <Card name={playerCard.name} src={cardOption1.image.url} power="101"/>
         <div> Your Superhero: {playerCard.name} </div>
       </main>
     </>
