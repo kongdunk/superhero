@@ -6,6 +6,7 @@ import axios from "axios";
 import { use, useEffect, useState } from "react";
 import Lottie from "lottie-react";
 import LoadingAnimation from "../public/loading.json";
+import useSound from 'use-sound';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,9 @@ export default function Home() {
 
   //SHOWS SELECTED CARD
   const [showCard, setShowCard] = useState(false);
+
+
+  const [toc] = useSound("/sounds/toc.mp3");
 
 
 
@@ -128,7 +132,11 @@ useEffect(() => {
               id="check1"
               type="checkbox"
               onChange={(e) => onlySelect(e.target.id, cardOption1)}
-              onClick={() => setShowCard(true)}
+              onClick={() => {
+                 setShowCard(true)
+                 {toc ("/sounds/toc.mp3")};
+                 }}
+              
             />
           </div>
           <div className="cardContainer">
@@ -143,7 +151,10 @@ useEffect(() => {
               id="check2"
               type="checkbox"
               onChange={(e) => onlySelect(e.target.id, cardOption2)}
-              onClick={() => setShowCard(true)}
+              onClick={() => {
+                 setShowCard(true)
+                 {toc ("public/sounds/toc.mp3")};
+                 }}
             />
           </div>
           <div className="cardContainer">
@@ -158,7 +169,10 @@ useEffect(() => {
               id="check3"
               type="checkbox"
               onChange={(e) => onlySelect(e.target.id, cardOption3)}
-              onClick={() => setShowCard(true)}
+              onClick={() => {
+                 setShowCard(true)
+                 {toc ("public/sounds/toc.mp3")};
+                 }}
             />
           </div>
           <div className="cardContainer">
@@ -173,7 +187,10 @@ useEffect(() => {
               id="check4"
               type="checkbox"
               onChange={(e) => onlySelect(e.target.id, cardOption4)}
-              onClick={() => setShowCard(true)}
+              onClick={() => {
+                 setShowCard(true)
+                 {toc ("public/sounds/toc.mp3")};
+                 }}
             />
           </div>
           <div className="cardContainer">
@@ -188,15 +205,19 @@ useEffect(() => {
               id="check5"
               type="checkbox"
               onChange={(e) => onlySelect(e.target.id, cardOption5)}
-              onClick={() => setShowCard(true)}
+              onClick={() => {
+                 setShowCard(true)
+                 {toc ("public/sounds/toc.mp3")};
+                 }}
             />
           </div>
         </div>
+        
 
 
       {   
         showCard ?     
-        <Card name={playerCard.name} src={playerCard.image.url} power='101'/>
+        <Card name={playerCard.name} src={playerCard.image.url} power="101"/>
         : null
       } 
 
