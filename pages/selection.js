@@ -16,13 +16,13 @@ export default function Home() {
   var key = "5714346188686087";
   const [data, setData] = useState({});
   const [name, setName] = useState("");
-  const [playerCard, setPlayerCard] = useState({});
+  const [playerCard, setPlayerCard] = useState({image:"n\a"});
+  const [botCard, setBotCard] = useState({});
   const [cardOption1, setCardOption1] = useState({});
   const [cardOption2, setCardOption2] = useState({});
   const [cardOption3, setCardOption3] = useState({});
   const [cardOption4, setCardOption4] = useState({});
   const [cardOption5, setCardOption5] = useState({});
-  const [cardOption1Image, setCardOption1Image] = useState("");
 
   const [loading, setLoading] = useState(true);
   const [quote, setQuote] = useState("")
@@ -38,7 +38,6 @@ export default function Home() {
         .then((response) => {
           console.log(response.data);
           setcardoption(response.data);
-          setCardOption1Image(response.data.image.url);
         })
         .catch((err) => {
           console.log(err);
@@ -84,6 +83,7 @@ useEffect(() => {
   setCharacter(setCardOption3, 200);
   setCharacter(setCardOption4, 300);
   setCharacter(setCardOption5, 400);
+  setCharacter(setBotCard, Math.floor((Math.random() * 731) + 1));
 
 
   //LOADING PAGE
@@ -116,7 +116,7 @@ useEffect(() => {
           <div className="cardContainer">
             <img
               style={{ height: "35vh" }}
-              src={cardOption1Image}
+              src={cardOption1.image.url}
               alt=""
               srcSet=""
             />
@@ -130,7 +130,7 @@ useEffect(() => {
           <div className="cardContainer">
             <img
               style={{ height: "35vh" }}
-              src={cardOption1Image}
+              src={cardOption2.image.url}
               alt=""
               srcSet=""
             />
@@ -144,7 +144,7 @@ useEffect(() => {
           <div className="cardContainer">
             <img
               style={{ height: "35vh" }}
-              src={cardOption1Image}
+              src={cardOption3.image.url}
               alt=""
               srcSet=""
             />
@@ -158,7 +158,7 @@ useEffect(() => {
           <div className="cardContainer">
             <img
               style={{ height: "35vh" }}
-              src={cardOption1Image}
+              src={cardOption4.image.url}
               alt=""
               srcSet=""
             />
@@ -172,7 +172,7 @@ useEffect(() => {
           <div className="cardContainer">
             <img
               style={{ height: "35vh" }}
-              src={cardOption1Image}
+              src={cardOption5.image.url}
               alt=""
               srcSet=""
             />
@@ -184,10 +184,22 @@ useEffect(() => {
             />
           </div>
         </div>
+
         
         <Card name={playerCard.name} src={cardOption1.image.url} power="101"/>
+
         <div> Your Superhero: {playerCard.name} </div>
-      </main>
+        <div className="cardContainer">
+            <img
+              style={{ height: "35vh" }}
+              src={botCard.image.url}
+              alt=""
+              srcSet=""
+            />
+            {botCard.name}{" "}
+          </div>
+        <div> You will be fighting against: </div>
+      </main> 
     </>
   );
 }
