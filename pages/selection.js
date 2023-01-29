@@ -27,6 +27,9 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [quote, setQuote] = useState("")
 
+  //SHOWS SELECTED CARD
+  const [showCard, setShowCard] = useState(false);
+
 
 
   /* FUNCTION FOR CALLING SUPERHERO API DATA TO cardOptions */
@@ -125,6 +128,7 @@ useEffect(() => {
               id="check1"
               type="checkbox"
               onChange={(e) => onlySelect(e.target.id, cardOption1)}
+              onClick={() => setShowCard(true)}
             />
           </div>
           <div className="cardContainer">
@@ -139,6 +143,7 @@ useEffect(() => {
               id="check2"
               type="checkbox"
               onChange={(e) => onlySelect(e.target.id, cardOption2)}
+              onClick={() => setShowCard(true)}
             />
           </div>
           <div className="cardContainer">
@@ -153,6 +158,7 @@ useEffect(() => {
               id="check3"
               type="checkbox"
               onChange={(e) => onlySelect(e.target.id, cardOption3)}
+              onClick={() => setShowCard(true)}
             />
           </div>
           <div className="cardContainer">
@@ -167,6 +173,7 @@ useEffect(() => {
               id="check4"
               type="checkbox"
               onChange={(e) => onlySelect(e.target.id, cardOption4)}
+              onClick={() => setShowCard(true)}
             />
           </div>
           <div className="cardContainer">
@@ -181,12 +188,17 @@ useEffect(() => {
               id="check5"
               type="checkbox"
               onChange={(e) => onlySelect(e.target.id, cardOption5)}
+              onClick={() => setShowCard(true)}
             />
           </div>
         </div>
 
-        
-        <Card name={playerCard.name} src={cardOption1.image.url} power="101"/>
+
+      {   
+        showCard ?     
+        <Card name={playerCard.name} src={playerCard.image.url} power='101'/>
+        : null
+      } 
 
         <div> Your Superhero: {playerCard.name} </div>
         <div className="cardContainer">
@@ -198,7 +210,7 @@ useEffect(() => {
             />
             {botCard.name}{" "}
           </div>
-        <div> You will be fighting against: </div>
+        <div> You will be fighting against: {botCard.name}</div>
       </main> 
     </>
   );
