@@ -24,6 +24,7 @@ export default function Home() {
   const [cardOption3, setCardOption3] = useState({});
   const [cardOption4, setCardOption4] = useState({});
   const [cardOption5, setCardOption5] = useState({});
+  const [cardPower, setCardPower] = useState(0);
 
   const [loading, setLoading] = useState(true);
   const [quote, setQuote] = useState("")
@@ -82,7 +83,7 @@ export default function Home() {
       const num = parseInt(stat)
       power += num
     })
-    console.log(power)
+    setCardPower(power)
   }
 
 //LOADING ANIMATION TIME
@@ -99,6 +100,7 @@ useEffect(() => {
     }
     document.getElementById(id).checked = true;
     setPlayerCard(playerCard);
+    calculatePower(playerCard)
   }
 
   /* CALLING THE FUNCTION TO GET THE SUPERHERO DATA */
@@ -234,12 +236,11 @@ useEffect(() => {
 
       {   
         showCard ?     
-        <Card name={playerCard.name} src={playerCard.image.url} power=""/>
+        <Card name={playerCard.name} src={playerCard.image.url} power={cardPower}/>
         : null
       } 
 
         <div> Your Superhero: {playerCard.name} </div>
-        <button onClick={() => {calculatePower(playerCard)}}>Click</button>
         <div className="cardContainer">
             <img
               style={{ height: "35vh" }}
