@@ -66,7 +66,24 @@ export default function Home() {
   }, [])
 }
 
+//CALCULATES SELECTED CARDS TOTAL POWERSTAT
+  function calculatePower(player){
+    var power = 0;
+    var stats = [];
+    
+    stats.push(player.powerstats.combat)
+    stats.push(player.powerstats.durability)
+    stats.push(player.powerstats.intelligence)
+    stats.push(player.powerstats.power)
+    stats.push(player.powerstats.speed)
+    stats.push(player.powerstats.strength)
 
+    stats.forEach((stat) => {
+      const num = parseInt(stat)
+      power += num
+    })
+    console.log(power)
+  }
 
 //LOADING ANIMATION TIME
 useEffect(() => {
@@ -217,11 +234,12 @@ useEffect(() => {
 
       {   
         showCard ?     
-        <Card name={playerCard.name} src={playerCard.image.url} power="101"/>
+        <Card name={playerCard.name} src={playerCard.image.url} power=""/>
         : null
       } 
 
         <div> Your Superhero: {playerCard.name} </div>
+        <button onClick={() => {calculatePower(playerCard)}}>Click</button>
         <div className="cardContainer">
             <img
               style={{ height: "35vh" }}
