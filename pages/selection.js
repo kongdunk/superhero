@@ -7,7 +7,7 @@ import { use, useEffect, useState } from "react";
 import Lottie from "lottie-react";
 import LoadingAnimation from "../public/loading.json";
 import useSound from "use-sound";
-import { bgImages } from '../public/bg'
+import { bgImages } from "../public/bg";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,12 +33,17 @@ export default function Home() {
   const [showCard, setShowCard] = useState(false);
   const [showCaption, setCaption] = useState(false);
 
+  // BUTTON COLOE CHANGE
+  const [color, setColor] = useState("gray");
+  const handleColor = () => {
+    setColor(color === "gray" ? '#d10a0a' : "#d10a0a");
+  };
+
   //SOUND
   const [toc] = useSound("/sounds/toc.mp3");
 
   //BG Image
   const [bg, setBg] = useState(Math.floor(Math.random() * 4));
-
 
   /* FUNCTION FOR CALLING SUPERHERO API DATA TO cardOptions */
   function setCharacter(setcardoption, characterID) {
@@ -56,6 +61,7 @@ export default function Home() {
     }, []);
   }
 
+
   function getQuote() {
     useEffect(() => {
       axios
@@ -69,6 +75,7 @@ export default function Home() {
         });
     }, []);
   }
+
 
   //CALCULATES SELECTED CARDS TOTAL POWERSTAT
   function calculatePower(player) {
@@ -110,8 +117,8 @@ export default function Home() {
   setCharacter(setCardOption1, Math.floor(Math.random() * 731 + 1));
   setCharacter(setCardOption2, Math.floor(Math.random() * 731 + 1));
   setCharacter(setCardOption3, Math.floor(Math.random() * 731 + 1));
-  setCharacter(setCardOption4, 300);
-  setCharacter(setCardOption5, 400);
+  setCharacter(setCardOption4, Math.floor(Math.random() * 731 + 1));
+  setCharacter(setCardOption5, Math.floor(Math.random() * 731 + 1));
   setCharacter(setBotCard, Math.floor(Math.random() * 731 + 1));
 
   getQuote();
@@ -142,135 +149,158 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-      <div className="pageCont">
-      <h1>Pick a Charater </h1>
-        <div className="optionsContainer">
-          <div className="cardContainer">
-            <img
-              style={{ height: "35vh" }}
-              src={cardOption1.image.url}
-              alt=""
-              srcSet=""
-            />
-            {cardOption1.name}{" "}
-            <input
-              id="check1"
-              type="checkbox"
-              onChange={(e) => onlySelect(e.target.id, cardOption1)}
-              onClick={() => {
-                setShowCard(true);
-                setCaption(true);
-                {
-                  toc("/sounds/toc.mp3");
-                }
-              }}
-            />
-          </div>
-          <div className="cardContainer">
-            <img
-              style={{ height: "35vh" }}
-              src={cardOption2.image.url}
-              alt=""
-              srcSet=""
-            />
-            {cardOption2.name}{" "}
-            <input
-              id="check2"
-              type="checkbox"
-              onChange={(e) => onlySelect(e.target.id, cardOption2)}
-              onClick={() => {
-                setShowCard(true);
-                setCaption(true);
-                {
-                  toc("public/sounds/toc.mp3");
-                }
-              }}
-            />
-          </div>
-          <div className="cardContainer">
-            <img
-              style={{ height: "35vh" }}
-              src={cardOption3.image.url}
-              alt=""
-              srcSet=""
-            />
-            {cardOption3.name}{" "}
-            <input
-              id="check3"
-              type="checkbox"
-              onChange={(e) => onlySelect(e.target.id, cardOption3)}
-              onClick={() => {
-                setShowCard(true);
-                setCaption(true);
-                {
-                  toc("public/sounds/toc.mp3");
-                }
-              }}
-            />
-          </div>
-          <div className="cardContainer">
-            <img
-              style={{ height: "35vh" }}
-              src={cardOption4.image.url}
-              alt=""
-              srcSet=""
-            />
-            {cardOption4.name}{" "}
-            <input
-              id="check4"
-              type="checkbox"
-              onChange={(e) => onlySelect(e.target.id, cardOption4)}
-              onClick={() => {
-                setShowCard(true);
-                setCaption(true);
-                {
-                  toc("public/sounds/toc.mp3");
-                }
-              }}
-            />
-          </div>
-          <div className="cardContainer">
-            <img
-              style={{ height: "35vh" }}
-              src={cardOption5.image.url}
-              alt=""
-              srcSet=""
-            />
-            {cardOption5.name}{" "}
-            <input
-              id="check5"
-              type="checkbox"
-              onChange={(e) => onlySelect(e.target.id, cardOption5)}
-              onClick={() => {
-                setShowCard(true);
-                setCaption(true);
-                {
-                  toc("public/sounds/toc.mp3");
-                }
-              }}
-            />
-          </div>
-        </div>
-
-        <div className="previewCont">
-          <div className="playerSelectCont">
-            {showCard ? (
-              <Card
-                name={playerCard.name}
-                src={playerCard.image.url}
-                power={cardPower}
+        <div className="pageCont">
+          <h1>Pick a Charater </h1>
+          <div className="optionsContainer">
+            <div className="cardContainer">
+              <img
+                style={{ height: "35vh" }}
+                src={cardOption1.image.url}
+                alt=""
+                srcSet=""
               />
-            ) : null}
-            {showCaption ? <h4> Your Superhero: {playerCard.name} </h4> : null}
+              {cardOption1.name}{" "}
+              <input
+              className="input"
+                id="check1"
+                type="checkbox"
+                onChange={(e) => onlySelect(e.target.id, cardOption1)}
+                onClick={() => {
+                  setShowCard(true);
+                  setCaption(true);
+                  handleColor();
+                  {
+                    toc("/sounds/toc.mp3");
+                  }
+                }}
+              />
+            </div>
+            <div className="cardContainer">
+              <img
+                style={{ height: "35vh" }}
+                src={cardOption2.image.url}
+                alt=""
+                srcSet=""
+              />
+              {cardOption2.name}{" "}
+              <input
+                id="check2"
+                type="checkbox"
+                onChange={(e) => onlySelect(e.target.id, cardOption2)}
+                onClick={() => {
+                  setShowCard(true);
+                  setCaption(true);
+                  handleColor();
+                  {
+                    toc("public/sounds/toc.mp3");
+                  }
+                }}
+              />
+            </div>
+            <div className="cardContainer">
+              <img
+                style={{ height: "35vh" }}
+                src={cardOption3.image.url}
+                alt=""
+                srcSet=""
+              />
+              {cardOption3.name}{" "}
+              <input
+                id="check3"
+                type="checkbox"
+                onChange={(e) => onlySelect(e.target.id, cardOption3)}
+                onClick={() => {
+                  setShowCard(true);
+                  setCaption(true);
+                  handleColor();
+                  {
+                    toc("public/sounds/toc.mp3");
+                  }
+                }}
+              />
+            </div>
+            <div className="cardContainer">
+              <img
+                style={{ height: "35vh" }}
+                src={cardOption4.image.url}
+                alt=""
+                srcSet=""
+              />
+              {cardOption4.name}{" "}
+              <input
+                id="check4"
+                type="checkbox"
+                onChange={(e) => onlySelect(e.target.id, cardOption4)}
+                onClick={() => {
+                  setShowCard(true);
+                  setCaption(true);
+                  handleColor();
+                  {
+                    toc("public/sounds/toc.mp3");
+                  }
+                }}
+              />
+            </div>
+            <div className="cardContainer">
+              <img
+                style={{ height: "35vh" }}
+                src={cardOption5.image.url}
+                alt=""
+                srcSet=""
+              />
+              {cardOption5.name}{" "}
+              <input
+                id="check5"
+                type="checkbox"
+                onChange={(e) => onlySelect(e.target.id, cardOption5)}
+                onClick={() => {
+                  setShowCard(true);
+                  setCaption(true);
+                  handleColor();
+                  {
+                    toc("public/sounds/toc.mp3");
+                  }
+                }}
+              />
+            </div>
           </div>
 
-          <div className="botCont">
-            <Card name={botCard.name} src={botCard.image.url} power="?" />
-            <h4> You will be fighting against: {botCard.name}</h4>
+          <div className="previewCont">
+            <div className="playerSelectCont">
+              {showCard ? (
+                <Card
+                  name={playerCard.name}
+                  src={playerCard.image.url}
+                  power={cardPower}
+                />
+              ) : null}
+              {showCaption ? (
+                <h4> Your Superhero: {playerCard.name} </h4>
+              ) : null}
+            </div>
+
+            <div className="botCont">
+              <Card name={botCard.name} src={botCard.image.url} power="?" />
+              <h4> You will be fighting against: {botCard.name}</h4>
+            </div>
+            <div className="buttonCont">
+              <button className="battleButton"
+                style={{ backgroundColor: color }}
+                title='Select a Character and Start!'
+                onClick={() => {
+                  if (color === "red") {
+                    // run function here
+
+                    console.log('red')
+                  }
+                }}
+              >
+                Battle
+              </button>
+              </div>
           </div>
+          <img className="bgImg" src={bgImages[bg].imageUrl} />
         </div>
-        <img className="bgImg" src={bgImages[bg].imageUrl}/>
-      </div>
       </main>
     </>
   );

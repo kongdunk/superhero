@@ -13,7 +13,7 @@ export default function Splash() {
 
   return (
     <div className="splashCont">
-      <img src="../placeholder.jpg" />
+      <img className="splash" src="../placeholder.jpg" />
       <button className="start"
         onClick={() => {
           r.push("/selection");
