@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
 const CardCont = styled.div`
-    width: 350px;
-    height: 480px;
+    width: 300px;
+    height: 400px;
     padding: 2.5em;
     padding-top: 2em;
     margin: 1em;
@@ -24,6 +24,8 @@ const ImgCont = styled.img`
     height: 85%;
     object-fit: cover;
     margin: 0.75em;
+    border-bottom-left-radius: 10px; 
+    border-bottom-right-radius: 10px;
 `
 
 const Name = styled.span`
