@@ -1,13 +1,14 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
-import styles from "@/styles/Home.module.css";
+import styles from "../styles/Home.module.css"
 import axios from "axios";
 import { use, useEffect, useState } from "react";
 import Lottie from "lottie-react";
 import LoadingAnimation from "../public/loading.json";
 import useSound from "use-sound";
 import { bgImages } from "../public/bg";
+import useStore from "../src/store";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +18,9 @@ export default function Home() {
   var key = "5714346188686087";
   const [data, setData] = useState({});
   const [name, setName] = useState("");
-  const [playerCard, setPlayerCard] = useState({ image: "na" });
+  const [playerUrl, setPlayerUrl] = useState("");
+  const playerCard = useStore(state => state.playerCard)
+  const setPlayerCard = useStore(state => state.setPlayerCard)
   const [botCard, setBotCard] = useState({});
   const [cardOption1, setCardOption1] = useState({});
   const [cardOption2, setCardOption2] = useState({});
@@ -25,10 +28,9 @@ export default function Home() {
   const [cardOption4, setCardOption4] = useState({});
   const [cardOption5, setCardOption5] = useState({});
   const [cardPower, setCardPower] = useState(0);
-
   const [loading, setLoading] = useState(true);
   const [quote, setQuote] = useState("");
-
+  const words = useStore(state => state.words)
   //SHOWS SELECTED CARD
   const [showCard, setShowCard] = useState(false);
   const [showCaption, setCaption] = useState(false);
@@ -111,6 +113,9 @@ export default function Home() {
     document.getElementById(id).checked = true;
     setPlayerCard(playerCard);
     calculatePower(playerCard);
+    console.log(playerCard)
+    setName(playerCard.name)
+    setPlayerUrl(playerCard.image.url)
   }
 
   /* CALLING THE FUNCTION TO GET THE SUPERHERO DATA */
@@ -264,13 +269,12 @@ export default function Home() {
               />
             </div>
           </div>
-
           <div className="previewCont">
             <div className="playerSelectCont">
               {showCard ? (
                 <Card
-                  name={playerCard.name}
-                  src={playerCard.image.url}
+                  name={name}
+                  src={playerUrl}
                   power={cardPower}
                 />
               ) : null}
@@ -282,6 +286,7 @@ export default function Home() {
             <div className="botCont">
               <Card name={botCard.name} src={botCard.image.url} power="?" />
               <h4> You will be fighting against: {botCard.name}</h4>
+            </div>
             </div>
             <div className="buttonCont">
               <button className="battleButton"
@@ -298,7 +303,7 @@ export default function Home() {
                 Battle
               </button>
               </div>
-          </div>
+          
           <img className="bgImg" src={bgImages[bg].imageUrl} />
         </div>
       </main>

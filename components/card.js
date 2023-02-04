@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components"  
 
 const CardCont = styled.div`
     width: 300px;
@@ -49,7 +49,7 @@ const PowerCont = styled.div`
 `
 
 export default function Card({ name, src, power }){
-
+    
 
     return (
         <CardCont>
