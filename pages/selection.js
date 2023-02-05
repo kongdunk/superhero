@@ -13,21 +13,28 @@ import useStore from "../src/store";
 const inter = Inter({ subsets: ["latin"] });
 
 import Card from "../components/card";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter()
+
   var key = "5714346188686087";
   const [data, setData] = useState({});
   const [name, setName] = useState("");
   const [playerUrl, setPlayerUrl] = useState("");
-  const playerCard = useStore(state => state.playerCard)
-  const setPlayerCard = useStore(state => state.setPlayerCard)
-  const [botCard, setBotCard] = useState({});
+  const playerCard = useStore(state => state.playerCard);
+  const setPlayerCard = useStore(state => state.setPlayerCard);
+  const botCard = useStore(state => state.botCard);
+  const setBotCard = useStore(state => state.setBotCard);
   const [cardOption1, setCardOption1] = useState({});
   const [cardOption2, setCardOption2] = useState({});
   const [cardOption3, setCardOption3] = useState({});
   const [cardOption4, setCardOption4] = useState({});
   const [cardOption5, setCardOption5] = useState({});
-  const [cardPower, setCardPower] = useState(0);
+  const cardPower = useStore(state => state.cardPower) 
+  const setCardPower = useStore(state => state.setCardPower);
+  const botPower = useStore(state => state.botPower);
+  const setBotPower = useStore(state => state.setBotPower);
   const [loading, setLoading] = useState(true);
   const [quote, setQuote] = useState("");
   const words = useStore(state => state.words)
@@ -46,7 +53,7 @@ export default function Home() {
 
   //BG Image
   const [bg, setBg] = useState(Math.floor(Math.random() * 4));
-
+  
   /* FUNCTION FOR CALLING SUPERHERO API DATA TO cardOptions */
   function setCharacter(setcardoption, characterID) {
     useEffect(() => {
@@ -80,7 +87,7 @@ export default function Home() {
 
 
   //CALCULATES SELECTED CARDS TOTAL POWERSTAT
-  function calculatePower(player) {
+  function calculatePower(player, setPlayerPower) {
     var power = 0;
     var stats = [];
 
@@ -95,7 +102,7 @@ export default function Home() {
       const num = parseInt(stat);
       power += num;
     });
-    setCardPower(power);
+    setPlayerPower(power);
   }
 
   //LOADING ANIMATION TIME
@@ -105,6 +112,15 @@ export default function Home() {
     }, 2000);
   });
 
+  useEffect(() => {
+    setName(playerCard.name)
+    setPlayerUrl(playerCard.image.url)
+  },[])
+
+    //LOADING ANIMATION TIME
+  useEffect(() => {
+    console.log(playerCard)
+  },[]);
   /* function for only selecting one SUPERHERO checkbox  */
   function onlySelect(id, playerCard) {
     for (let i = 1; i < 6; i++) {
@@ -112,7 +128,7 @@ export default function Home() {
     }
     document.getElementById(id).checked = true;
     setPlayerCard(playerCard);
-    calculatePower(playerCard);
+    calculatePower(playerCard, setCardPower);
     console.log(playerCard)
     setName(playerCard.name)
     setPlayerUrl(playerCard.image.url)
@@ -292,16 +308,18 @@ export default function Home() {
               <button className="battleButton"
                 style={{ backgroundColor: color }}
                 title='Select a Character and Start!'
-                onClick={() => {
-                  if (color === "red") {
-                    // run function here
+                onClick={async () => {
+                  await calculatePower(botCard, setBotPower)
+                  router.push("http://localhost:3000/battle")
 
-                    console.log('red')
-                  }
                 }}
               >
                 Battle
               </button>
+              <div>
+                bruh
+              {botPower}
+              </div>
               </div>
           
           <img className="bgImg" src={bgImages[bg].imageUrl} />

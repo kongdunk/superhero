@@ -21,13 +21,16 @@ export default function Home() {
   const [playerUrl, setPlayerUrl] = useState("");
   const playerCard = useStore(state => state.playerCard)
   const setPlayerCard = useStore(state => state.setPlayerCard)
-  const [botCard, setBotCard] = useState({});
+  const botCard = useStore(state => state.botCard);
+  const setBotCard = useStore(state => state.setBotCard);
   const [cardOption1, setCardOption1] = useState({});
   const [cardOption2, setCardOption2] = useState({});
   const [cardOption3, setCardOption3] = useState({});
   const [cardOption4, setCardOption4] = useState({});
   const [cardOption5, setCardOption5] = useState({});
-  const [cardPower, setCardPower] = useState(0);
+  const cardPower = useStore(state => state.cardPower) 
+  const botPower = useStore(state => state.botPower);
+  const setCardPower = useStore(state => state.setCardPower);
   const [loading, setLoading] = useState(true);
   const [quote, setQuote] = useState("");
   const words = useStore(state => state.words)
@@ -97,34 +100,16 @@ export default function Home() {
     });
     setCardPower(power);
   }
-
+  useEffect(() => {
+    setName(playerCard.name)
+    setPlayerUrl(playerCard.image.url)
+  },[])
   //LOADING ANIMATION TIME
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
   });
-
-  /* function for only selecting one SUPERHERO checkbox  */
-  function onlySelect(id, playerCard) {
-    for (let i = 1; i < 6; i++) {
-      document.getElementById("check" + i).checked = false;
-    }
-    document.getElementById(id).checked = true;
-    setPlayerCard(playerCard);
-    calculatePower(playerCard);
-    console.log(playerCard)
-    setName(playerCard.name)
-    setPlayerUrl(playerCard.image.url)
-  }
-
-  /* CALLING THE FUNCTION TO GET THE SUPERHERO DATA */
-  setCharacter(setCardOption1, Math.floor(Math.random() * 731 + 1));
-  setCharacter(setCardOption2, Math.floor(Math.random() * 731 + 1));
-  setCharacter(setCardOption3, Math.floor(Math.random() * 731 + 1));
-  setCharacter(setCardOption4, Math.floor(Math.random() * 731 + 1));
-  setCharacter(setCardOption5, Math.floor(Math.random() * 731 + 1));
-  setCharacter(setBotCard, Math.floor(Math.random() * 731 + 1));
 
   getQuote();
 
@@ -166,9 +151,8 @@ export default function Home() {
                 <h4> Your Superhero: {playerCard.name} </h4>
               ) : null}
             </div>
-
             <div className="botCont">
-              <Card name={botCard.name} src={botCard.image.url} power="?" />
+              <Card name={botCard.name} src={botCard.image.url} power={botPower} />
               <h4> You will be fighting against: {botCard.name}</h4>
             </div>
             </div>
@@ -177,15 +161,12 @@ export default function Home() {
                 style={{ backgroundColor: color }}
                 title='Select a Character and Start!'
                 onClick={() => {
-                  if (color === "red") {
-                    // run function here
-
-                    console.log('red')
-                  }
+                  location.href = "http://localhost:3000/"
                 }}
               >
                 Battle
               </button>
+              <button onClick={() => console.log(playerCard)}>player </button>
               </div>
           
           <img className="bgImg" src={bgImages[bg].imageUrl} />
