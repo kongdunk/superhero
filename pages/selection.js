@@ -111,12 +111,6 @@ export default function Home() {
       setLoading(false);
     }, 2000);
   });
-
-  useEffect(() => {
-    setName(playerCard.name)
-    setPlayerUrl(playerCard.image.url)
-  },[])
-
     //LOADING ANIMATION TIME
   useEffect(() => {
     console.log(playerCard)
