@@ -11,11 +11,13 @@
   "dependencies": {
     "@next/font": "13.1.2",
     "axios": "^1.2.2",
+    "immer": "^9.0.19",
     "lottie-react": "^2.3.1",
     "next": "13.1.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "styled-components": "^5.3.6",
-    "use-sound": "^4.0.1"
+    "use-sound": "^4.0.1",
+    "zustand": "^4.3.2"
   }
 }
