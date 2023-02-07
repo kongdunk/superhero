@@ -288,7 +288,7 @@ export default function Home() {
                 style={{ backgroundColor: color }}
                 title='Select a Character and Start!'
                 onClick={() => {
-                  if (color === "red") {
+                  if (color === "#d10a0a") {
                     // run function here
 
                     console.log('red')
