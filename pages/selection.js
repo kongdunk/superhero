@@ -302,10 +302,14 @@ export default function Home() {
               <button className="battleButton"
                 style={{ backgroundColor: color }}
                 title='Select a Character and Start!'
+
+                onClick={() => {
+                  if (color === "#d10a0a") {
+                    // run function here
+
                 onClick={async () => {
                   await calculatePower(botCard, setBotPower)
                   router.push("http://localhost:3000/battle")
-
                 }}
               >
                 Battle
