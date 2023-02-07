@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
-import styles from "../styles/Home.module.css"
+import styles from "../styles/Home.module.css";
 import axios from "axios";
 import { use, useEffect, useState } from "react";
 import Lottie from "lottie-react";
@@ -9,31 +9,34 @@ import LoadingAnimation from "../public/loading.json";
 import useSound from "use-sound";
 import { bgImages } from "../public/bg";
 import useStore from "../src/store";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
 import Card from "../components/card";
 
 export default function Home() {
+  const router = useRouter();
+
   var key = "5714346188686087";
   const [data, setData] = useState({});
   const [name, setName] = useState("");
   const [playerUrl, setPlayerUrl] = useState("");
-  const playerCard = useStore(state => state.playerCard)
-  const setPlayerCard = useStore(state => state.setPlayerCard)
-  const botCard = useStore(state => state.botCard);
-  const setBotCard = useStore(state => state.setBotCard);
+  const playerCard = useStore((state) => state.playerCard);
+  const setPlayerCard = useStore((state) => state.setPlayerCard);
+  const botCard = useStore((state) => state.botCard);
+  const setBotCard = useStore((state) => state.setBotCard);
   const [cardOption1, setCardOption1] = useState({});
   const [cardOption2, setCardOption2] = useState({});
   const [cardOption3, setCardOption3] = useState({});
   const [cardOption4, setCardOption4] = useState({});
   const [cardOption5, setCardOption5] = useState({});
-  const cardPower = useStore(state => state.cardPower) 
-  const botPower = useStore(state => state.botPower);
-  const setCardPower = useStore(state => state.setCardPower);
+  const cardPower = useStore((state) => state.cardPower);
+  const botPower = useStore((state) => state.botPower);
+  const setCardPower = useStore((state) => state.setCardPower);
   const [loading, setLoading] = useState(true);
   const [quote, setQuote] = useState("");
-  const words = useStore(state => state.words)
+  const words = useStore((state) => state.words);
   //SHOWS SELECTED CARD
   const [showCard, setShowCard] = useState(false);
   const [showCaption, setCaption] = useState(false);
@@ -41,8 +44,10 @@ export default function Home() {
   // BUTTON COLOE CHANGE
   const [color, setColor] = useState("gray");
   const handleColor = () => {
-    setColor(color === "gray" ? '#d10a0a' : "#d10a0a");
+    setColor(color === "gray" ? "#d10a0a" : "#d10a0a");
   };
+
+
 
   //SOUND
   const [toc] = useSound("/sounds/toc.mp3");
@@ -66,7 +71,6 @@ export default function Home() {
     }, []);
   }
 
-
   function getQuote() {
     useEffect(() => {
       axios
@@ -80,7 +84,6 @@ export default function Home() {
         });
     }, []);
   }
-
 
   //CALCULATES SELECTED CARDS TOTAL POWERSTAT
   function calculatePower(player) {
@@ -101,14 +104,20 @@ export default function Home() {
     setCardPower(power);
   }
   useEffect(() => {
-    setName(playerCard.name)
-    setPlayerUrl(playerCard.image.url)
-  },[])
+    setName(playerCard.name);
+    setPlayerUrl(playerCard.image.url);
+  }, []);
   //LOADING ANIMATION TIME
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
+  });
+
+  useEffect(() => {
+    setTimeout(() => {
+      handleColor();
+    }, 9000);
   });
 
   getQuote();
@@ -142,33 +151,36 @@ export default function Home() {
         <div className="pageCont">
           <div className="previewCont">
             <div className="playerSelectCont">
-            <Card
-                name={name}
-                src={playerUrl}
-                power={cardPower}
-            />
+              <Card name={name} src={playerUrl} power={cardPower} />
               {showCaption ? (
                 <h4> Your Superhero: {playerCard.name} </h4>
               ) : null}
             </div>
             <div className="botCont">
-              <Card name={botCard.name} src={botCard.image.url} power={botPower} />
+              <Card
+                name={botCard.name}
+                src={botCard.image.url}
+                power={botPower}
+              />
               <h4> You will be fighting against: {botCard.name}</h4>
             </div>
-            </div>
-            <div className="buttonCont">
-              <button className="battleButton"
-                style={{ backgroundColor: color }}
-                title='Select a Character and Start!'
-                onClick={() => {
-                  location.href = "http://localhost:3000/"
-                }}
-              >
-                Battle
-              </button>
-              <button onClick={() => console.log(playerCard)}>player </button>
-              </div>
-          
+          </div>
+          <div className="buttonCont">
+            <button
+              className="battleButton"
+              style={{ backgroundColor: color }}
+              title="Select a Character and Start!"
+              onClick={async () => {
+                if (color === "#d10a0a") {
+                  router.push("http://localhost:3000/selection");
+                } 
+              }}
+            >
+              Battle
+            </button>
+            <button onClick={() => console.log(playerCard)}>player </button>
+          </div>
+
           <img className="bgImg" src={bgImages[bg].imageUrl} />
         </div>
       </main>
