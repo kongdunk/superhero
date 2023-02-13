@@ -160,7 +160,6 @@ export default function Home() {
                 src={botCard.image.url}
                 power={botPower}
               />
-              <h4> You will be fighting against: {botCard.name}</h4>
             </div>
           </div>
 
