@@ -292,7 +292,7 @@ export default function Home() {
               <h4> You will be fighting against: {botCard.name}</h4>
             </div>
           </div>
-          <div className="buttonCont">
+
             <button
               className="battleButton"
               style={{ backgroundColor: color }}
@@ -312,7 +312,7 @@ export default function Home() {
               bruh
               {botPower}
             </div>
-          </div>
+
 
           <img className="bgImg" src={bgImages[bg].imageUrl} />
         </div>
