@@ -280,7 +280,6 @@ export default function Home() {
             </div>
           </div>
           
-          
           <div className="selectedCont">
             <div className="previewCont">     
               <div className="playerSelectCont">
@@ -315,8 +314,6 @@ export default function Home() {
               </button>
             </div>  
           </div>
-          
-
           <img className="bgImg" src={bgImages[bg].imageUrl} />
       </main>
     </>

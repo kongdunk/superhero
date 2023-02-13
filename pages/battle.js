@@ -47,8 +47,6 @@ export default function Home() {
     setColor(color === "gray" ? "#d10a0a" : "#d10a0a");
   };
 
-
-
   //SOUND
   const [toc] = useSound("/sounds/toc.mp3");
 
@@ -165,7 +163,7 @@ export default function Home() {
               <h4> You will be fighting against: {botCard.name}</h4>
             </div>
           </div>
-          <div className="buttonCont">
+
             <button
               className="battleButton"
               style={{ backgroundColor: color }}
@@ -173,13 +171,13 @@ export default function Home() {
               onClick={async () => {
                 if (color === "#d10a0a") {
                   router.push("http://localhost:3000/selection");
-                } 
+                }
               }}
             >
               Battle
             </button>
             <button onClick={() => console.log(playerCard)}>player </button>
-          </div>
+
 
           <img className="bgImg" src={bgImages[bg].imageUrl} />
         </div>
