@@ -5,6 +5,7 @@ const CardCont = styled.div`
     height: 400px;
     padding: 2.5em;
     padding-top: 2em;
+    margin: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;

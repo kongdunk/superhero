@@ -26,6 +26,7 @@
   padding: 4em;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -122,24 +123,11 @@
   background-color: red;
 }
 
-/* .buttonCont {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  width: 250px;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-} */
-
 .battleButton {
-  position: absolute;
   width: 200px;
   height: 80px;
   font-size: 2em;
   border-radius: 10px;
-    bottom: 20px;
-  right: 50px;
 }
 
 .battleButton:hover {
