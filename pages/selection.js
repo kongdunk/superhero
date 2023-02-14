@@ -9,6 +9,7 @@ import LoadingAnimation from "../public/loading.json";
 import useSound from "use-sound";
 import { bgImages } from "../public/bg";
 import useStore from "../src/store";
+import Music from "../components/music";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -127,12 +128,12 @@ export default function Home() {
   }
 
   /* CALLING THE FUNCTION TO GET THE SUPERHERO DATA */
-  setCharacter(setCardOption1, Math.floor(Math.random() * 100 + 1));
-  setCharacter(setCardOption2, Math.floor(Math.random() * 100 + 1));
-  setCharacter(setCardOption3, Math.floor(Math.random() * 100 + 1));
-  setCharacter(setCardOption4, Math.floor(Math.random() * 100 + 1));
-  setCharacter(setCardOption5, Math.floor(Math.random() * 100 + 1));
-  setCharacter(setBotCard, Math.floor(Math.random() * 100 + 1));
+  setCharacter(setCardOption1, Math.floor(Math.random() * 731 + 1));
+  setCharacter(setCardOption2, Math.floor(Math.random() * 731 + 1));
+  setCharacter(setCardOption3, Math.floor(Math.random() * 731 + 1));
+  setCharacter(setCardOption4, Math.floor(Math.random() * 731 + 1));
+  setCharacter(setCardOption5, Math.floor(Math.random() * 731 + 1));
+  setCharacter(setBotCard, Math.floor(Math.random() * 731 + 1));
 
   getQuote();
 
@@ -162,6 +163,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="selectionCont">
+        <Music />
 
           <div className="characterSelectionCont">  
             <h1>Pick a Charater </h1>
@@ -284,7 +286,7 @@ export default function Home() {
             <div className="previewCont">     
               <div className="playerSelectCont">
                 {showCard ? (
-                  <Card name={name} src={playerUrl} power={cardPower} />
+                  <Card name={name} src={playerUrl} power='?' />
                 ) : null}
                 {showCaption ? (
                   <h4> Your Superhero: {playerCard.name} </h4>

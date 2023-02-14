@@ -14,6 +14,8 @@ const CardCont = styled.div`
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    transform-style: preserve-3d;
+  animation: flip 0.5s 1 forwards;
 `
 
 const ImgCont = styled.img`
