@@ -15,6 +15,9 @@ const CardCont = styled.div`
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    transform-style: preserve-3d;
+  animation: flip 0.5s 1 forwards;
+
 
     @media (max-width: 768px) {
     width: 200px;
@@ -31,6 +34,7 @@ const CardCont = styled.div`
     background-repeat: no-repeat;
     background-position: center;
   }
+
 `
 
 const ImgCont = styled.img`

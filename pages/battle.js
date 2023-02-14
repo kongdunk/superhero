@@ -115,7 +115,7 @@ export default function Home() {
   useEffect(() => {
     setTimeout(() => {
       handleColor();
-    }, 9000);
+    }, 5000);
   });
 
   getQuote();
@@ -149,34 +149,52 @@ export default function Home() {
         <div className="pageCont">
           <div className="previewCont">
             <div className="playerSelectCont">
-              <Card name={name} src={playerUrl} power={cardPower} />
+            <div className="botCont" style={cardPower < botPower ? { filter: "brightness(30%)" } : {boxShadow: "0 0 50px 10px #0cb5f2"}}>
+              <Card
+                className="card-animate"
+                name={name}
+                src={playerUrl}
+                power={cardPower}
+              />
+              </div>
               {showCaption ? (
                 <h4> Your Superhero: {playerCard.name} </h4>
               ) : null}
             </div>
-            <div className="botCont">
+            <div className="botCont" style={cardPower > botPower ? { filter: "brightness(30%)" } : {boxShadow: "0 0 50px 5px rgba(255, 0, 0, 1)"}}>
               <Card
                 name={botCard.name}
                 src={botCard.image.url}
                 power={botPower}
               />
             </div>
+
+            {cardPower !== null && botPower !== null && (
+              <p>
+                {cardPower > botPower ? (
+                  <div className="header">You Win!</div>
+                ) : cardPower < botPower ? (
+                  <div className="header">You Lose!</div>
+                ) : (
+                  <div className="header">"It's a tie!" </div>
+                )}
+              </p>
+            )}
           </div>
 
-            <button
-              className="battleButton"
-              style={{ backgroundColor: color }}
-              title="Select a Character and Start!"
-              onClick={async () => {
-                if (color === "#d10a0a") {
-                  router.push("http://localhost:3000/selection");
-                }
-              }}
-            >
-              Battle
-            </button>
-            <button onClick={() => console.log(playerCard)}>player </button>
-
+          <button
+            className="battleButton"
+            style={{ backgroundColor: color }}
+            title="Select a Character and Start!"
+            onClick={async () => {
+              if (color === "#d10a0a") {
+                router.push("http://localhost:3000/selection");
+              }
+            }}
+          >
+            Battle
+          </button>
+          <button onClick={() => console.log(playerCard)}>player </button>
 
           <img className="bgImg" src={bgImages[bg].imageUrl} />
         </div>
