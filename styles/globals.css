@@ -26,6 +26,7 @@
   padding: 4em;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -122,24 +123,20 @@
   background-color: red;
 }
 
-/* .buttonCont {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  width: 250px;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-} */
+.pageCont > button {
+  text-align: center;
+}
 
 .battleButton {
-  position: absolute;
-  width: 200px;
-  height: 80px;
+  padding: 1.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  margin: 1em;
   font-size: 2em;
   border-radius: 10px;
-  bottom: 0px;
-  right: 0px;
+  bottom: 20px;
+  right: 50px;
+
 }
 
 .battleButton:hover {

@@ -290,14 +290,12 @@ export default function Home() {
                   <h4> Your Superhero: {playerCard.name} </h4>
                 ) : null}
               </div>
-
               <div className="botCont">
                 <Card name={botCard.name} src={botCard.image.url} power="?" />
                 <h4> You will be fighting against: {botCard.name}</h4>
               </div>
             </div> 
-            <div className="buttonCont">
-              <button
+            <button
                 className="battleButton"
                 style={{ backgroundColor: color }}
                 title="Select a Character and Start!"
@@ -311,8 +309,7 @@ export default function Home() {
                 }}
               >
                 Battle
-              </button>
-            </div>  
+            </button> 
           </div>
           <img className="bgImg" src={bgImages[bg].imageUrl} />
       </main>
