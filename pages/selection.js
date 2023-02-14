@@ -127,12 +127,12 @@ export default function Home() {
   }
 
   /* CALLING THE FUNCTION TO GET THE SUPERHERO DATA */
-  setCharacter(setCardOption1, Math.floor(Math.random() * 731 + 1));
-  setCharacter(setCardOption2, Math.floor(Math.random() * 731 + 1));
-  setCharacter(setCardOption3, Math.floor(Math.random() * 731 + 1));
-  setCharacter(setCardOption4, Math.floor(Math.random() * 731 + 1));
-  setCharacter(setCardOption5, Math.floor(Math.random() * 731 + 1));
-  setCharacter(setBotCard, Math.floor(Math.random() * 731 + 1));
+  setCharacter(setCardOption1, Math.floor(Math.random() * 100 + 1));
+  setCharacter(setCardOption2, Math.floor(Math.random() * 100 + 1));
+  setCharacter(setCardOption3, Math.floor(Math.random() * 100 + 1));
+  setCharacter(setCardOption4, Math.floor(Math.random() * 100 + 1));
+  setCharacter(setCardOption5, Math.floor(Math.random() * 100 + 1));
+  setCharacter(setBotCard, Math.floor(Math.random() * 100 + 1));
 
   getQuote();
 
