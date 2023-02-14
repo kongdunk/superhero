@@ -15,6 +15,22 @@ const CardCont = styled.div`
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+
+    @media (max-width: 768px) {
+    width: 200px;
+    height: 300px;
+    padding: 2.5em;
+    padding-top: 2em;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    background-image: url("card.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 `
 
 const ImgCont = styled.img`
