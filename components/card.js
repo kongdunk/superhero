@@ -5,6 +5,7 @@ const CardCont = styled.div`
     height: 400px;
     padding: 2.5em;
     padding-top: 2em;
+    margin: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,6 +17,24 @@ const CardCont = styled.div`
     background-position: center;
     transform-style: preserve-3d;
   animation: flip 0.5s 1 forwards;
+
+
+    @media (max-width: 768px) {
+    width: 200px;
+    height: 300px;
+    padding: 2.5em;
+    padding-top: 2em;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    background-image: url("card.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
 `
 
 const ImgCont = styled.img`

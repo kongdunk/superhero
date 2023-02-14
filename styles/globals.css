@@ -36,6 +36,7 @@
   padding: 4em;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -136,24 +137,19 @@
   background-color: red;
 }
 
-/* .buttonCont {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  width: 250px;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-} */
+.pageCont > button {
+  text-align: center;
+}
 
 .battleButton {
-  position: absolute;
-  width: 200px;
-  height: 80px;
+  padding: 1.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  margin: 1em;
   font-size: 2em;
   border-radius: 10px;
-  bottom: 0px;
-  right: 0px;
+  bottom: 20px;
+  right: 50px;
 }
 
 .battleButton:hover {
@@ -358,7 +354,6 @@ a {
   }
 }
 
-
 @media (max-width: 1800px) {
   h1 {
     width: 100vw;
@@ -376,11 +371,9 @@ a {
   }
 }
 
-
 @media (max-height: 620px) {
   .pageCont {
     display: flex;
-
   }
   .optionsContainer {
     margin-top: 0rem;
@@ -388,7 +381,7 @@ a {
   h1 {
     margin-top: 50rem;
   }
-    .battleButton {
+  .battleButton {
     position: relative;
     bottom: 0;
   }
@@ -404,11 +397,10 @@ a {
   h1 {
     margin-top: 60rem;
   }
-
 }
 
 @media (max-width: 1155px) {
-        .battleButton {
+  .battleButton {
     position: relative;
     bottom: 0;
     right: 50px;
@@ -417,3 +409,59 @@ a {
   }
 }
 
+@media (max-width: 768px) {
+  .optionsContainer {
+    height: 75%;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .characterSelectionCont {
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(255, 255, 255, 0.5);
+  }
+  .cardCont {
+    display: flex;
+    flex-direction: column;
+    height: 130px;
+    width: 90px;
+    margin: 1rem;
+    border: #dddddd solid 2px;
+    border-radius: 5px;
+    background: linear-gradient(250deg, #d5b0f7, #f5e4ce, #b5e9f2, #bdf5c3);
+    background-size: 300% 300%;
+    animation: gradient 10s ease infinite;
+    padding: 0.5em;
+    text-align: center;
+    color: #3d3d3d;
+    filter: brightness(0.55) contrast(1.2);
+  }
+  .selectionCont {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .selectedCont {
+    width: 66%;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .battleButton {
+    display: flex;
+    padding: 1.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin: 0.3em;
+    font-size: 2em;
+  }
+}
