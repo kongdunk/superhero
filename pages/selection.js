@@ -62,8 +62,15 @@ export default function Home() {
       axios
         .get(`https://superheroapi.com/api.php/${key}/${characterID}`)
         .then((response) => {
-          console.log(response.data);
-          setcardoption(response.data);
+          
+          console.log(response.data.powerstats.combat);
+          if(response.data.powerstats.combat == "null") {
+            window.location.reload(true)
+          } else {
+            console.log(response.data);
+            setcardoption(response.data);
+          }
+          
         })
         .catch((err) => {
           console.log(err);
@@ -90,18 +97,22 @@ export default function Home() {
     var power = 0;
     var stats = [];
 
-    stats.push(player.powerstats.combat);
-    stats.push(player.powerstats.durability);
-    stats.push(player.powerstats.intelligence);
-    stats.push(player.powerstats.power);
-    stats.push(player.powerstats.speed);
-    stats.push(player.powerstats.strength);
+    
+      stats.push(player.powerstats.combat);
+      stats.push(player.powerstats.durability);
+      stats.push(player.powerstats.intelligence);
+      stats.push(player.powerstats.power);
+      stats.push(player.powerstats.speed);
+      stats.push(player.powerstats.strength);
 
-    stats.forEach((stat) => {
-      const num = parseInt(stat);
-      power += num;
-    });
-    setPlayerPower(power);
+      stats.forEach((stat) => {
+        const num = parseInt(stat);
+        power += num;
+      });
+      setPlayerPower(power);
+    
+
+    
   }
 
   //LOADING ANIMATION TIME
@@ -116,18 +127,29 @@ export default function Home() {
   }, []);
   /* function for only selecting one SUPERHERO checkbox  */
   function onlySelect(id, playerCard) {
-    for (let i = 1; i < 6; i++) {
+    let max = 6;
+    for (let i = 1; i < max; i++) {
       document.getElementById("check" + i).checked = false;
     }
+
     document.getElementById(id).checked = true;
-    setPlayerCard(playerCard);
-    calculatePower(playerCard, setCardPower);
-    console.log(playerCard);
-    setName(playerCard.name);
-    setPlayerUrl(playerCard.image.url);
+
+    console.log(id)
+
+      setPlayerCard(playerCard);
+      calculatePower(playerCard, setCardPower);
+      console.log(playerCard);
+      setName(playerCard.name);
+      setPlayerUrl(playerCard.image.url);
+  
+    
   }
 
-  /* CALLING THE FUNCTION TO GET THE SUPERHERO DATA */
+  const regenerate = () => {
+
+  }
+
+  /* CALLING THE FUNCTION TO GET THE SUPERHERO DATA */  
   setCharacter(setCardOption1, Math.floor(Math.random() * 731 + 1));
   setCharacter(setCardOption2, Math.floor(Math.random() * 731 + 1));
   setCharacter(setCardOption3, Math.floor(Math.random() * 731 + 1));
@@ -286,14 +308,14 @@ export default function Home() {
             <div className="previewCont">     
               <div className="playerSelectCont">
                 {showCard ? (
-                  <Card name={name} src={playerUrl} power='?' />
+                  <Card name={name} src={playerUrl} power={cardPower} />
                 ) : null}
                 {showCaption ? (
                   <h4> Your Superhero: {playerCard.name} </h4>
                 ) : null}
               </div>
               <div className="botCont">
-                <Card name={botCard.name} src={botCard.image.url} power="?" />
+                <Card name={botCard.name} src={botCard.image.url} power={botPower} />
                 <h4> You will be fighting against: {botCard.name}</h4>
               </div>
             </div> 
