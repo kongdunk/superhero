@@ -35,7 +35,6 @@ export default function Home() {
   const botPower = useStore((state) => state.botPower);
   const setCardPower = useStore((state) => state.setCardPower);
   const [loading, setLoading] = useState(true);
-  const [quote, setQuote] = useState("");
   const words = useStore((state) => state.words);
   //SHOWS SELECTED CARD
   const [showCard, setShowCard] = useState(false);
@@ -50,8 +49,22 @@ export default function Home() {
   //SOUND
   const [toc] = useSound("/sounds/toc.mp3");
 
+  
   //BG Image
   const [bg, setBg] = useState(Math.floor(Math.random() * 4));
+
+  //quote stuff
+  const [quote, setQuote] = useState();
+
+  useEffect( () => {
+    getQuote()
+  }, []);
+
+  async function getQuote() {
+      const res = await axios.get("https://type.fit/api/quotes")
+      setQuote(res.data[1])
+      console.log(quote)
+  }
 
   /* FUNCTION FOR CALLING SUPERHERO API DATA TO cardOptions */
   function setCharacter(setcardoption, characterID) {
@@ -62,20 +75,6 @@ export default function Home() {
         .then((response) => {
           console.log(response.data);
           setcardoption(response.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }, []);
-  }
-
-  function getQuote() {
-    useEffect(() => {
-      axios
-        .get("https://www.affirmations.dev/")
-        .then((response) => {
-          console.log(response);
-          setQuote(response);
         })
         .catch((err) => {
           console.log(err);
@@ -118,13 +117,11 @@ export default function Home() {
     }, 5000);
   });
 
-  getQuote();
-
   //LOADING PAGE
   if (loading) {
     return (
       <div className="loadingCont">
-        <div className="quote">{quote}</div>
+        <div className="quote"></div>
         <Lottie
           className="loader"
           style={{ width: 500, height: 500 }}
@@ -181,7 +178,7 @@ export default function Home() {
               </p>
             )}
           </div>
-
+          <div> {quote.text} </div>
           <button
             className="battleButton"
             style={{ backgroundColor: color }}
