@@ -26,9 +26,9 @@ export default function Music() {
           <source src="/sounds/music.mp3" type="audio/mpeg" />
         </audio>
         {isPlaying ? (
-          <button onClick={togglePlayback}>Pause</button>
+          <div className='pause' onClick={togglePlayback}>🔊</div>
         ) : (
-          <button onClick={togglePlayback}>Play</button>
+          <div onClick={togglePlayback}>🔇</div>
         )}
       </div>
 
