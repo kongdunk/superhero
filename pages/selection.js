@@ -50,7 +50,8 @@ export default function Home() {
   };
 
   //SOUND
-  const [toc] = useSound("/sounds/toc.mp3");
+  const [thunder] = useSound("/sounds/thunder.mp3");
+  const [sword] = useSound("/sounds/sword.mp3");
 
   //BG Image
   const [bg, setBg] = useState(Math.floor(Math.random() * 4));
@@ -64,7 +65,7 @@ export default function Home() {
         .then((response) => {
           
           console.log(response.data.powerstats.combat);
-          if(response.data.powerstats.combat == "null") {
+          if(response.data.powerstats.combat == "null" || response.data.image == 'null') {
             window.location.reload(true)
           } else {
             console.log(response.data);
@@ -78,19 +79,19 @@ export default function Home() {
     }, []);
   }
 
-  function getQuote() {
-    useEffect(() => {
-      axios
-        .get("https://www.affirmations.dev/")
-        .then((response) => {
-          console.log(response);
-          setQuote(response);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }, []);
-  }
+  // function getQuote() {
+  //   useEffect(() => {
+  //     axios
+  //       .get("https://www.affirmations.dev/")
+  //       .then((response) => {
+  //         console.log(response);
+  //         setQuote(response);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }, []);
+  // }
 
   //CALCULATES SELECTED CARDS TOTAL POWERSTAT
   function calculatePower(player, setPlayerPower) {
@@ -145,10 +146,6 @@ export default function Home() {
     
   }
 
-  const regenerate = () => {
-
-  }
-
   /* CALLING THE FUNCTION TO GET THE SUPERHERO DATA */  
   setCharacter(setCardOption1, Math.floor(Math.random() * 731 + 1));
   setCharacter(setCardOption2, Math.floor(Math.random() * 731 + 1));
@@ -157,13 +154,13 @@ export default function Home() {
   setCharacter(setCardOption5, Math.floor(Math.random() * 731 + 1));
   setCharacter(setBotCard, Math.floor(Math.random() * 731 + 1));
 
-  getQuote();
+  // getQuote();
 
   //LOADING PAGE
   if (loading) {
     return (
       <div className="loadingCont">
-        <div className="quote">{quote}</div>
+        {/* <div className="quote">{quote}</div> */}
         <Lottie
           className="loader"
           style={{ width: 500, height: 500 }}
@@ -208,7 +205,7 @@ export default function Home() {
                     setCaption(true);
                     handleColor();
                     {
-                      toc("/sounds/toc.mp3");
+                      thunder("/sounds/thunder.mp3");
                     }
                   }}
                 />
@@ -230,7 +227,7 @@ export default function Home() {
                     setCaption(true);
                     handleColor();
                     {
-                      toc("public/sounds/toc.mp3");
+                      thunder("public/sounds/thunder.mp3");
                     }
                   }}
                 />
@@ -252,7 +249,7 @@ export default function Home() {
                     setCaption(true);
                     handleColor();
                     {
-                      toc("public/sounds/toc.mp3");
+                      thunder("public/sounds/thunder.mp3");
                     }
                   }}
                 />
@@ -274,7 +271,7 @@ export default function Home() {
                     setCaption(true);
                     handleColor();
                     {
-                      toc("public/sounds/toc.mp3");
+                      thunder("public/sounds/thunder.mp3");
                     }
                   }}
                 />
@@ -296,7 +293,7 @@ export default function Home() {
                     setCaption(true);
                     handleColor();
                     {
-                      toc("public/sounds/toc.mp3");
+                      thunder("public/sounds/thunder.mp3");
                     }
                   }}
                 />
@@ -308,14 +305,14 @@ export default function Home() {
             <div className="previewCont">     
               <div className="playerSelectCont">
                 {showCard ? (
-                  <Card name={name} src={playerUrl} power={cardPower} />
+                  <Card name={name} src={playerUrl} power='?' />
                 ) : null}
                 {showCaption ? (
                   <h4> Your Superhero: {playerCard.name} </h4>
                 ) : null}
               </div>
               <div className="botCont">
-                <Card name={botCard.name} src={botCard.image.url} power={botPower} />
+                <Card name={botCard.name} src={botCard.image.url} power='?' />
                 <h4> You will be fighting against: {botCard.name}</h4>
               </div>
             </div> 
@@ -325,6 +322,9 @@ export default function Home() {
                 title="Select a Character and Start!"
                 onClick={async () => {
                   if (color === "#d10a0a") {
+                    {
+                      sword("public/sounds/sword.mp3");
+                    }
                     await calculatePower(botCard, setBotPower);
                     router.push("http://localhost:3000/battle");
                   } else {

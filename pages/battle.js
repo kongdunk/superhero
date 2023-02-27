@@ -47,7 +47,7 @@ export default function Home() {
   };
 
   //SOUND
-  const [toc] = useSound("/sounds/toc.mp3");
+  const [sword] = useSound("/sounds/sword.mp3");
 
   
   //BG Image
@@ -146,19 +146,33 @@ export default function Home() {
         <div className="pageCont">
           <div className="previewCont">
             <div className="playerSelectCont">
-            <div className="botCont" style={cardPower < botPower ? { filter: "brightness(30%)" } : {boxShadow: "0 0 50px 10px #0cb5f2"}}>
-              <Card
-                className="card-animate"
-                name={name}
-                src={playerUrl}
-                power={cardPower}
-              />
+              <div
+                className="botCont"
+                style={
+                  cardPower < botPower
+                    ? { filter: "brightness(30%)" }
+                    : { boxShadow: "0 0 50px 10px #0cb5f2" }
+                }
+              >
+                <Card
+                  className="card-animate"
+                  name={name}
+                  src={playerUrl}
+                  power={cardPower}
+                />
               </div>
               {showCaption ? (
                 <h4> Your Superhero: {playerCard.name} </h4>
               ) : null}
             </div>
-            <div className="botCont" style={cardPower > botPower ? { filter: "brightness(30%)" } : {boxShadow: "0 0 50px 5px rgba(255, 0, 0, 1)"}}>
+            <div
+              className="botCont"
+              style={
+                cardPower > botPower
+                  ? { filter: "brightness(30%)" }
+                  : { boxShadow: "0 0 50px 5px rgba(255, 0, 0, 1)" }
+              }
+            >
               <Card
                 name={botCard.name}
                 src={botCard.image.url}
@@ -169,11 +183,11 @@ export default function Home() {
             {cardPower !== null && botPower !== null && (
               <p>
                 {cardPower > botPower ? (
-                  <div className="header">You Win!</div>
+                  <span className="header">You Win!</span>
                 ) : cardPower < botPower ? (
-                  <div className="header">You Lose!</div>
+                  <span className="header">You Lose!</span>
                 ) : (
-                  <div className="header">"It's a tie!" </div>
+                  <span className="header">"It's a tie!" </span>
                 )}
               </p>
             )}
@@ -185,6 +199,9 @@ export default function Home() {
             title="Select a Character and Start!"
             onClick={async () => {
               if (color === "#d10a0a") {
+                {
+                  sword("public/sounds/sword.mp3");
+                }
                 router.push("http://localhost:3000/selection");
               }
             }}
