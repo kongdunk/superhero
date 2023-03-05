@@ -167,7 +167,7 @@ export default function Home() {
           animationData={LoadingAnimation}
           loop={true}
         />
-        <img className="loadingSplash" src="../placeholder.jpg" />
+        <img className="loadingSplash" src="../superhero-battle-cover.png" />
       </div>
     );
   }

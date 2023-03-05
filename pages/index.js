@@ -26,7 +26,7 @@ export default function Splash() {
 
   return (
     <div className="splashCont">
-      <img className="splash" src="../placeholder.jpg" />
+      <img className="splash" src="../superhero-battle-cover.png" />
     <Music />
       <button
         className="start"
@@ -34,7 +34,7 @@ export default function Splash() {
           r.push("/selection");
         }}
       >
-        Start
+        START
       </button>
     </div>
   );
