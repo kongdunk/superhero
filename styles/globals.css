@@ -9,6 +9,14 @@
   animation: fade-in 3s ease-in-out;
 }
 
+h1 {
+  font-family: sans-serif;
+}
+
+h4 {
+  font-family: sans-serif;
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -211,6 +219,9 @@ h5 {
   padding-top: 1rem;
   padding-bottom: 1rem;
   font-size: 1.5em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 10px;
   background: red;
   position: absolute;
 }
