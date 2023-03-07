@@ -117,18 +117,30 @@ export default function Home() {
     }, 5000);
   });
 
+  //quote
+  useEffect( () => {
+    getQuote()
+  }, []);
+
+  async function getQuote() {
+    const res = await axios.get("https://type.fit/api/quotes");
+    const quotes = res.data;
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    setQuote(quotes[randomIndex]);
+    console.log(quote);
+  }
+
   //LOADING PAGE
   if (loading) {
     return (
       <div className="loadingCont">
-        <div className="quote"></div>
         <Lottie
           className="loader"
           style={{ width: 500, height: 500 }}
           animationData={LoadingAnimation}
           loop={true}
         />
-        <img className="loadingSplash" src="../placeholder.jpg" />
+        <img className="loadingSplash" src="../superhero-battle-cover.png" />
       </div>
     );
   }
@@ -192,7 +204,7 @@ export default function Home() {
               </p>
             )}
           </div>
-          <div> {quote.text} </div>
+          <h5> "{quote.text}"</h5>
           <button
             className="battleButton"
             style={{ backgroundColor: color }}
@@ -208,7 +220,7 @@ export default function Home() {
           >
             Battle
           </button>
-          <button onClick={() => console.log(playerCard)}>player </button>
+          {/* <button onClick={() => console.log(playerCard)}>player </button> */}
 
           <img className="bgImg" src={bgImages[bg].imageUrl} />
         </div>

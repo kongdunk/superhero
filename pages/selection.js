@@ -155,11 +155,24 @@ export default function Home() {
   setCharacter(setBotCard, Math.floor(Math.random() * 731 + 1));
 
   // getQuote();
+  useEffect( () => {
+    getQuote()
+  }, []);
+
+  async function getQuote() {
+    const res = await axios.get("https://type.fit/api/quotes");
+    const quotes = res.data;
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    setQuote(quotes[randomIndex]);
+    console.log(quote);
+  }
+  
 
   //LOADING PAGE
   if (loading) {
     return (
       <div className="loadingCont">
+            {/* <div className="quote"> {quote.text} </div> */}
         {/* <div className="quote">{quote}</div> */}
         <Lottie
           className="loader"
@@ -185,7 +198,7 @@ export default function Home() {
         <Music />
 
           <div className="characterSelectionCont">  
-            <h1>Pick a Charater </h1>
+            <h1>Pick a Character </h1>
             <div className="optionsContainer">
               <div className="cardCont">
                 <img
