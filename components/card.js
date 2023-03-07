@@ -10,6 +10,7 @@ const CardCont = styled.div`
     flex-direction: column;
     align-items: center;
     color: white;
+    font-family: sans-serif;
     position: relative;
     background-image: url("card.png");
     background-size: contain;
