@@ -214,7 +214,7 @@ export default function Home() {
                 {
                   sword("public/sounds/sword.mp3");
                 }
-                router.push("http://localhost:3000/selection");
+                router.push("/selection");
               }
             }}
           >
