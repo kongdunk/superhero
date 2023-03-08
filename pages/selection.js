@@ -339,7 +339,7 @@ export default function Home() {
                       sword("public/sounds/sword.mp3");
                     }
                     await calculatePower(botCard, setBotPower);
-                    router.push("http://localhost:3000/battle");
+                    router.push("/battle");
                   } else {
                     null
                   }
