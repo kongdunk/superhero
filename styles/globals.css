@@ -41,15 +41,16 @@ h5 {
 
 .characterSelectionCont {
   width: 34%;
-  padding: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(255, 255, 255, 0.5);
+  background: rgb(45,45,45);
+  background: linear-gradient(180deg, rgba(45,45,45,1) 0%, rgba(14,14,14,1) 100%);
 }
 
 .optionsContainer {
   height: 75%;
+  padding: 1em;
   margin: 0;
   display: flex;
   justify-content: space-around;
@@ -94,18 +95,23 @@ h5 {
 .cardCont {
   display: flex;
   flex-direction: column;
-  height: 195px;
-  width: 130px;
-  margin: 1rem;
+  height: 200px;
+  width: 150px;
+  padding: 0.5em;
   border: #dddddd solid 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   background: linear-gradient(250deg, #d5b0f7, #f5e4ce, #b5e9f2, #bdf5c3);
   background-size: 300% 300%;
   animation: gradient 10s ease infinite;
-  padding: 0.5em;
   text-align: center;
   color: #3d3d3d;
-  filter: brightness(0.55) contrast(1.2);
+}
+
+.cardCont > img {
+  height: 125px;
+  margin-bottom: 0.5em;
+  width: auto;
+  object-fit: cover;
 }
 
 .cardCont input {
