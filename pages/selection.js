@@ -32,6 +32,7 @@ export default function Home() {
   const [cardOption3, setCardOption3] = useState({});
   const [cardOption4, setCardOption4] = useState({});
   const [cardOption5, setCardOption5] = useState({});
+  const [cardOption6, setCardOption6] = useState({});
   const cardPower = useStore((state) => state.cardPower);
   const setCardPower = useStore((state) => state.setCardPower);
   const botPower = useStore((state) => state.botPower);
@@ -111,9 +112,6 @@ export default function Home() {
         power += num;
       });
       setPlayerPower(power);
-    
-
-    
   }
 
   //LOADING ANIMATION TIME
@@ -152,6 +150,7 @@ export default function Home() {
   setCharacter(setCardOption3, Math.floor(Math.random() * 731 + 1));
   setCharacter(setCardOption4, Math.floor(Math.random() * 731 + 1));
   setCharacter(setCardOption5, Math.floor(Math.random() * 731 + 1));
+  setCharacter(setCardOption6, Math.floor(Math.random() * 731 + 1));
   setCharacter(setBotCard, Math.floor(Math.random() * 731 + 1));
 
   // getQuote();
@@ -176,7 +175,13 @@ export default function Home() {
         {/* <div className="quote">{quote}</div> */}
         <Lottie
           className="loader"
-          style={{ width: 500, height: 500 }}
+          style={{ 
+            width: 200, 
+            height: 200,
+            position: "absolute",
+            bottom: 0,
+            right: 0,
+          }}
           animationData={LoadingAnimation}
           loop={true}
         />
@@ -198,11 +203,12 @@ export default function Home() {
         <Music />
 
           <div className="characterSelectionCont">  
-            <h1>Pick a Character </h1>
+            <div className={styles.charSelCont}>
+              <h1>Choose Fighter</h1>
+            </div>
             <div className="optionsContainer">
               <div className="cardCont">
                 <img
-                  style={{ height: "35vh" }}
                   src={cardOption1.image.url}
                   alt=""
                   srcSet=""
@@ -225,7 +231,6 @@ export default function Home() {
               </div>
               <div className="cardCont">
                 <img
-                  style={{ height: "35vh" }}
                   src={cardOption2.image.url}
                   alt=""
                   srcSet=""
@@ -247,7 +252,6 @@ export default function Home() {
               </div>
               <div className="cardCont">
                 <img
-                  style={{ height: "35vh" }}
                   src={cardOption3.image.url}
                   alt=""
                   srcSet=""
@@ -269,7 +273,6 @@ export default function Home() {
               </div>
               <div className="cardCont">
                 <img
-                  style={{ height: "35vh" }}
                   src={cardOption4.image.url}
                   alt=""
                   srcSet=""
@@ -291,7 +294,6 @@ export default function Home() {
               </div>
               <div className="cardCont">
                 <img
-                  style={{ height: "35vh" }}
                   src={cardOption5.image.url}
                   alt=""
                   srcSet=""
@@ -307,6 +309,28 @@ export default function Home() {
                     handleColor();
                     {
                       thunder("public/sounds/thunder.mp3");
+                    }
+                  }}
+                />
+              </div>
+              <div className="cardCont">
+                <img
+                  src={cardOption6.image.url}
+                  alt=""
+                  srcSet=""
+                />
+                {cardOption6.name}{" "}
+                <input
+                  className="input"
+                  id="check1"
+                  type="checkbox"
+                  onChange={(e) => onlySelect(e.target.id, cardOption6)}
+                  onClick={() => {
+                    setShowCard(true);
+                    setCaption(true);
+                    handleColor();
+                    {
+                      thunder("/sounds/thunder.mp3");
                     }
                   }}
                 />
