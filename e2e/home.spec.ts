@@ -1,5 +1,35 @@
 import { test, expect } from '@playwright/test'
 
+test.beforeEach(async ({ page }) => {
+  console.log('beforeAll')
+});
+
+test.afterEach(async ({ page }) => {
+  console.log('afterAll')
+});
+
+test.describe('Header area', () => {
+  test('The title tag', async({ page }) => {
+    await page.goto('http://localhost:3000/');
+
+    await expect(page).toHaveTitle('Superhero Battle');
+  });
+
+  test('The meta tag', async({ page }) => {
+    await page.goto('http://localhost:3000/');
+
+    const metaDescription = page.locator('meta[name="description"]');
+    await expect(metaDescription).toHaveAttribute('content', "Created by Daesan Kim, Ivan Li, and Ivan Tong");
+  });
+
+  test('The link tag', async({ page }) => {
+    await page.goto('http://localhost:3000/');
+
+    const linkTag = page.locator('link[rel="icon"]');
+    await expect(linkTag).toHaveAttribute('href', "/favicon.png");
+  });
+})
+
 test('button text should be START', async ({ page }) => {
     // Start from the index page
     await page.goto('http://localhost:3000/')

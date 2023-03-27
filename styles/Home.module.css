@@ -118,15 +118,6 @@
   }
 }
 
-.charSelCont {
-  display: flex;
-  padding: 1em;
-  background: rgb(255,103,0);
-  background: radial-gradient(circle, rgba(255,103,0,1) 0%, rgba(247,38,38,1) 100%);
-  width: 100%;
-  border-bottom: 15px solid black
-}
-
 .charSelCont > h1 {
   color: black;
 }
