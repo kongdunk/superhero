@@ -48,6 +48,15 @@ h5 {
   background: linear-gradient(180deg, rgba(45,45,45,1) 0%, rgba(14,14,14,1) 100%);
 }
 
+.charSelTitle {
+  display: flex;
+  padding: 1em;
+  background: rgb(255,103,0);
+  background: radial-gradient(circle, rgba(255,103,0,1) 0%, rgba(247,38,38,1) 100%);
+  width: 100%;
+  border-bottom: 15px solid black
+}
+
 .optionsContainer {
   height: 75%;
   padding: 1em;

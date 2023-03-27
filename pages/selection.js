@@ -203,7 +203,7 @@ export default function Home() {
         <Music />
 
           <div className="characterSelectionCont">  
-            <div className={styles.charSelCont}>
+            <div className="charSelTitle">
               <h1>Choose Fighter</h1>
             </div>
             <div className="optionsContainer">
