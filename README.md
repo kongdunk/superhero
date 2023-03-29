@@ -6,8 +6,11 @@ This is a web app that uses a fictional character api that lets users pick a cha
 
 Superhero API for getting superhero stuff
 
+Quote API for getting random quotes
+
 ```
 https://superheroapi.com/
+https://type.fit/api/quotes
 ```
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
